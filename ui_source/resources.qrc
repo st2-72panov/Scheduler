@@ -1,0 +1,52 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>images/icons/icon_maximize.png</file>
+    <file>images/icons/icon_minimize.png</file>
+    <file>images/icons/icon_close.png</file>
+    <file>images/icons/icon_hide.png</file>
+    <file>images/icons/icon_calendar.png</file>
+    <file>images/icons/icon_settings.png</file>
+    <file>images/icons/icon_equalizer.png</file>
+    <file>images/icons/icon_arrow-down.png</file>
+    <file>images/icons/icon_arrow-down_16px.png</file>
+    <file>images/icons/icon_arrow-up.png</file>
+    <file>images/icons/icon_arrow-up_16px.png</file>
+    <file>images/icons/icon_plus.png</file>
+    <file>images/icons/icon_plus_hov.png</file>
+    <file>images/icons/icon_notes.png</file>
+    <file>images/icons/icon_notes_hov.png</file>
+    <file>images/icons/icon_undo.png</file>
+    <file>images/icons/icon_redo.png</file>
+    <file>images/icons/icon_edit.png</file>
+    <file>images/icons/icon_edit_hov.png</file>
+    <file>images/icons/icon_undo_frozen.png</file>
+    <file>images/icons/icon_redo_frozen.png</file>
+    <file>images/icons/icon_done.png</file>
+    <file>images/icons/icon_size_grip.png</file>
+    <file>images/icons/icon_checked.png</file>
+    <file>images/icons/icon_checked_pr1.png</file>
+    <file>images/icons/icon_checked_pr2.png</file>
+    <file>images/icons/icon_checked_pr3.png</file>
+    <file>images/icons/icon_unchecked.png</file>
+    <file>images/icons/icon_unchecked_pr1.png</file>
+    <file>images/icons/icon_unchecked_pr2.png</file>
+    <file>images/icons/icon_unchecked_pr3.png</file>
+    <file>images/icons/icon_circle.png</file>
+    <file>images/icons/icon_ucRadio_pr1.png</file>
+    <file>images/icons/icon_ucRadio_pr2.png</file>
+    <file>images/icons/icon_ucRadio_pr3.png</file>
+    <file>images/icons/icon_cRadio.png</file>
+    <file>images/icons/icon_cRadio_pr1.png</file>
+    <file>images/icons/icon_cRadio_pr2.png</file>
+    <file>images/icons/icon_cRadio_pr3.png</file>
+  </qresource>
+  <qresource prefix="images">
+    <file>images/icons/home.png</file>
+    <file>images/icons/plan.png</file>
+    <file>images/icons/deadline.png</file>
+    <file>images/icons/goals.png</file>
+    <file>images/icons/statistics.png</file>
+    <file>images/logo/spiral.png</file>
+    <file>images/logo/logo.ico</file>
+  </qresource>
+</RCC>

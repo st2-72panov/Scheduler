@@ -1,0 +1,3458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>940</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>940</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Scheduler</string>
+  </property>
+  <widget class="QWidget" name="styleSheets">
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Layouts   */
+
+#bgApp {	 background-color: #f8f9fa }
+#bottomBar { background-color: #dee5ef }
+
+ /*//////////////*/
+/*Top Header*/
+#topHeader { background-color: #7EAFE7 }
+
+ /*//////////*/
+/*Content*/
+#pageContainer { background-color: #f8f9fa }
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Menus    */
+
+ /*////////////////*/
+/* Top Buttons */
+#topButtons { background-color: #f8f9fa; border: 2px solid #72A5DC;  border-radius: 5px; }
+
+#topButtons .QPushButton { border: none;  border-radius: 5px; }
+#topButtons .QPushButton:hover { background-color: #dde4e6; border-style: solid; border-radius: 4px; }
+#topButtons .QPushButton:pressed { background-color: #cdd7da; border-style: solid; border-radius: 4px; }
+
+ /*////////////////*/
+/* Left Buttons */
+
+#leftMenuBox0 { background-color: #7EAFE7 }
+#leftMenuBox { 
+	background-color: #f8f9fa; 
+	border-top: 2px solid #72A5DC; 
+	border-bottom: 2px solid #72A5DC
+}
+#leftMenuBox .QPushButton {	
+	background-position: left center;
+    background-repeat: no-repeat;
+	border: none;
+	border-left: 16px solid transparent;
+	background-color: transparent;
+	text-align: left;
+	padding-left: 44px;
+}
+#leftMenuBox .QPushButton:hover { background-color: #dde4e6 }
+#leftMenuBox .QPushButton:pressed { background-color: #cdd7da }
+
+
+#settingsBtn {	
+	background-position: left center;
+    background-repeat: no-repeat;
+	border: none;
+	border-left: 16px solid transparent;
+	background-color: transparent;
+	text-align: left;
+	padding-left: 44px;
+}
+#settingsBtn:hover { background-color: #78a8cf }
+#settingsBtn:pressed { background-color: #79add4 }
+
+ /*//////////*/
+/*Settings*/
+#settingsLayout {
+	background-color: #f8f9fa;
+	border-top: 2px solid #8cadc7
+}
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Page Container    */
+
+#pageContainer .QLabel { color: #1F1F1F; font-size: 10pt }
+#pageContainer .QTableView, QTreeView { border: 2px solid #7EAFE7; border-radius: 5px }
+QScrollArea, QLineEdit, QTextEdit { border: none }
+
+/* QTabWidget */
+QTabWidget:pane {
+	border: 2px solid #cad0d9;
+	border-radius: 5px;
+	padding: 7px;
+	padding-top: 11px;
+	padding-bottom: 11px
+}
+QTabWidget::tab-bar { left: 6px }
+QTabBar::tab { 
+	border: 2px solid #cad0d9;
+	border-bottom: none;
+	padding: 4px
+}
+
+QTabBar::tab:first { border-top-left-radius: 4px }
+QTabBar::tab:last { border-top-right-radius: 4px }
+QTabBar::tab:!first:!last { margin-left: -1px; margin-right: -1px }
+QTabBar::tab:!selected { margin-top: 4px }
+QTabBar::tab:first { margin-right: -1px }
+QTabBar::tab:last { margin-left: -1px }
+QTabBar::tab:selected {
+	border: 2px solid #b5bac1;
+	border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+/*QSpinBox*/
+QDateEdit, QSpinBox {
+	border: 2px solid #cad0d9;
+	border-radius: 4px;
+	padding: 2px;
+	font-size: 10pt
+}
+QDateEdit::up-button, QDateEdit::down-button,
+QSpinBox::up-button, QSpinBox::down-button {	
+	background-color: #fff;
+	border: 2px solid #b6bbc3;
+	margin: -2px;
+	width: 10px
+}
+QDateEdit::up-button, QSpinBox::up-button { margin-bottom: -1px; border-top-right-radius: 4px }
+QDateEdit::down-button, QSpinBox::down-button { margin-top: -1px; border-bottom-right-radius: 4px }
+QDateEdit::up-arrow, QSpinBox::up-arrow { image: url(:/icons/images/icons/icon_arrow-up.png); }
+QDateEdit::down-arrow, QSpinBox::down-arrow { image: url(:/icons/images/icons/icon_arrow-down.png); }
+
+/*QCheckBox*/
+QCheckBox::indicator:unchecked { image: url(:/icons/images/icons/icon_unchecked.png) }
+QCheckBox::indicator:checked { image: url(:/icons/images/icons/icon_checked.png) }
+
+/*QScrollBar*/
+QScrollBar:vertical {
+	border: 2px solid #7EAFE7;
+	border-radius: 5px;
+	background: #f8f9fa;
+	width: 12px;
+	margin: 17px 0 17px 0;
+ }
+QScrollBar::handle:vertical {
+	background: #cad0d9;
+	border: 1px solid #dee5ef;
+	min-height: 25px;
+	border-radius: 4px
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+	border: 2px solid #cad0d9;
+	background: #fff;
+	height: 7px;
+	subcontrol-origin: margin;
+}
+QScrollBar::add-line:vertical { subcontrol-position: bottom }
+QScrollBar::sub-line:vertical { subcontrol-position: top }
+
+QScrollBar::up-arrow:vertical { image: url(:/icons/images/icons/icon_arrow-up.png) }
+QScrollBar::down-arrow:vertical { image: url(:/icons/images/icons/icon_arrow-down.png) }
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: none;
+}
+
+
+ /*//////////////*/
+/*Home Page*/
+#page_Home { background-color: #D9E9F5 }
+#page_Home_Layout { background-color: #f8f9fa }
+
+#ph_border {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-top: 2px dashed #dee5ef
+}
+
+#ph_label_1 { margin-left: 3px }
+#ph_label_2 { margin-left: 3px }
+
+#ph_tabWidget .QLabel { margin-left: 3px }
+#ph_todayWidget, #ph_weekWidget, #ph_monthWidget { background-color: #fff }
+
+ /*//////////////////*/
+/*Deadlines Page*/
+#page_Deadlines { background-color: #D9E9F5 }
+#page_Deadlines_Layout { background-color: #f8f9fa }
+#page_Deadlines_Layout .QLabel { margin-left: 3px }
+#pd_border {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-top: 2px dashed #dee5ef
+}
+
+
+ /*/////////////*/
+/*Goals Page*/
+#page_Goals { background-color: #D9E9F5 }
+#page_Goals .QLabel { margin-left: 3px }
+
+#pg_scrollArea { border: none }
+#pg_mainLayer { background-color: transparent }
+#pg_mainFrame { background-color: #f8f9fa; }
+#pg_border, #pg_noteBorder {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-top: 2px dashed #dee5ef
+}
+
+#pg_showNoteBtn {
+	border: none;
+	background-color: transparent;
+	margin-right: 15px;
+	image: url(:/icons/images/icons/icon_notes.png);
+	image-position: left;
+	text-align: right;
+}
+
+#pg_showNoteBtn:hover, #pg_showNoteBtn:pressed {
+	image: url(:/icons/images/icons/icon_notes_hov.png);
+	color: #4b4b4b
+}
+
+#pg_noteScrollArea {  border: 2px solid #b6bbc3; border-radius: 5px; }
+#pg_noteWidget { background-color: #fff }
+
+#pg_noteHideBtn {
+	background-color: transparent;
+	border-left: 2px solid #b6bbc3;
+	border-bottom: 2px solid #b6bbc3;
+	border-radius: 1px
+}
+#pg_noteChangeBtn {
+	border: none;
+	background-color: transparent;
+}
+#pg_redoBtn, #pg_undoBtn, #pg_doneBtn {
+	border: none;
+	border-radius: 5px;
+	background-color: transparent;
+	image-position: left;
+	text-align: right;
+}
+#pg_redoBtn:hover, #pg_undoBtn:hover, #pg_doneBtn:hover, #pg_noteHideBtn:hover { background-color: #dde4e6 }
+#pg_textEdit { border: none }
+#pg_textEdit:!enabled { background-color: #fff }
+
+#pg_newGoalBtn, #pg_editGoalBtn {
+	border: none;
+	background-color: transparent;
+	image: url(:/icons/images/icons/icon_plus.png);
+	image-position: left;
+	text-align: right
+}
+#pg_newGoalBtn { image: url(:/icons/images/icons/icon_plus.png) }
+#pg_editGoalBtn { image: url(:/icons/images/icons/icon_edit.png) }
+#pg_newGoalBtn:hover {
+	image: url(:/icons/images/icons/icon_plus_hov.png);
+	color: #313131
+}
+#pg_editGoalBtn:hover {
+	image: url(:/icons/images/icons/icon_edit_hov.png);
+	color: #313131
+}
+
+
+/*newGoalFrame*/
+#pg_newGoalFrame .QFrame {
+	border-left: 2px solid #dee5ef;
+	border-radius: 0px;
+	background-color: #fff
+}
+#pg_ng_goalEdit, #pg_ng_noteEdit { border-bottom: 2px solid #dee5ef }
+
+#pg_ng_doneBtn, #pg_ng_cancelBtn {
+	border: none;
+	border-radius: 5px;
+	background-color: #fff;
+}
+#pg_ng_doneBtn:hover, #pg_ng_cancelBtn:hover { background-color: #dde4e6 }
+
+#pg_ng_rBtn_1,
+#pg_ng_rBtn_2,
+#pg_ng_rBtn_3 { margin-right: -5px }
+#pg_ng_rBtn_1::indicator::unchecked { image: url(:/icons/images/icons/icon_ucRadio_pr1.png) }
+#pg_ng_rBtn_2::indicator::unchecked { image: url(:/icons/images/icons/icon_ucRadio_pr2.png) }
+#pg_ng_rBtn_3::indicator::unchecked { image: url(:/icons/images/icons/icon_ucRadio_pr3.png) }
+#pg_ng_rBtn_1::indicator::checked { image: url(:/icons/images/icons/icon_cRadio_pr1.png) }
+#pg_ng_rBtn_2::indicator::checked { image: url(:/icons/images/icons/icon_cRadio_pr2.png) }
+#pg_ng_rBtn_3::indicator::checked { image: url(:/icons/images/icons/icon_cRadio_pr3.png) }
+
+
+ /*////////////*/
+/*Plan Page*/
+#page_Plan { background-color: #D9E9F5 }
+#page_Plan_mainLayout { background-color: #f8f9fa }
+#pp_border {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-top: 2px dashed #dee5ef
+}
+
+#pp_createTaskBtn, #pp_editTaskBtn {
+	border: none;
+	background-color: transparent;
+	image-position: left;
+	text-align: right;
+}
+#pp_createTaskBtn { image: url(:/icons/images/icons/icon_plus.png) }
+#pp_createTaskBtn:hover { image: url(:/icons/images/icons/icon_plus_hov.png); color: #313131 }
+#pp_editTaskBtn { image: url(:/icons/images/icons/icon_edit.png) }
+#pp_editTaskBtn:hover { image: url(:/icons/images/icons/icon_edit_hov.png); color: #313131 }
+
+/*TaskEditFrame*/
+#pp_te_habitLabel { margin-left: 5px }
+#pp_te_dateFrame { border: 2px dashed #dee5ef }
+#pp_te_datesFrame { border-top: 2px dashed #dee5ef }
+#pp_te_DoW_Frame { border-right: 2px dashed #dee5ef; border-radius: 0px }
+
+#pp_te_habitFrame {
+	border-left: 2px solid #dee5ef;
+	border-radius: 0px;
+	background-color: #fff
+}
+
+#pp_te_cancelBtn, #pp_te_doneBtn {
+	border: none;
+	border-radius: 5px;
+	background-color: #fff;
+}
+#pp_te_doneBtn:hover, #pp_te_cancelBtn:hover { background-color: #dde4e6 }
+
+#pp_te_rBtn_1,
+#pp_te_rBtn_2,
+#pp_te_rBtn_3 { margin-right: -5px }
+#pp_te_rBtn_1::indicator::unchecked { image: url(:/icons/images/icons/icon_ucRadio_pr1.png) }
+#pp_te_rBtn_2::indicator::unchecked { image: url(:/icons/images/icons/icon_ucRadio_pr2.png) }
+#pp_te_rBtn_3::indicator::unchecked { image: url(:/icons/images/icons/icon_ucRadio_pr3.png) }
+#pp_te_rBtn_1::indicator::checked { image: url(:/icons/images/icons/icon_cRadio_pr1.png) }
+#pp_te_rBtn_2::indicator::checked { image: url(:/icons/images/icons/icon_cRadio_pr2.png) }
+#pp_te_rBtn_3::indicator::checked { image: url(:/icons/images/icons/icon_cRadio_pr3.png) }
+
+#pp_te_deadlineFrame, #pp_te_endFrame, #pp_te_priorityFrame {
+	border-left: 2px solid #dee5ef;
+	border-radius: 0px;
+	background-color: #fff
+}
+
+#pp_te_taskEdit, #pp_te_noteEdit { border-bottom: 2px solid #dee5ef }
+
+
+ /*//////////////////*/
+/*Statistics Page*/
+#page_Statistics { background-color: #D9E9F5 }
+#ps_mainLayout { background-color: #f8f9fa }
+#ps_border_1, #ps_border_2 {
+	margin-left: 20px;
+	margin-right: 20px;
+	border-top: 2px dashed #dee5ef
+}
+#ps_archiveBg { background-color: #fff }
+
+
+
+
+
+
+
+
+</string>
+   </property>
+   <layout class="QVBoxLayout" name="appMargins">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="bgApp">
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="appLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="topHeader">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="headerLayout" stretch="0,0,0">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="topLogo">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="logo">
+             <property name="geometry">
+              <rect>
+               <x>5</x>
+               <y>5</y>
+               <width>42</width>
+               <height>42</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-image: url(:/images/images/logo/spiral.png);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="topLeftBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>10</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="headerInfo">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(255, 255, 255);</string>
+               </property>
+               <property name="text">
+                <string>Заголовок</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="topButtons">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="frameLayout">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="minimizeAppBtn">
+               <property name="minimumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>Minimize</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/icons/images/icons/icon_minimize.png</normaloff>:/icons/images/icons/icon_minimize.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="maximizeAppBtn">
+               <property name="minimumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>maximize</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/icons/images/icons/icon_maximize.png</normaloff>:/icons/images/icons/icon_maximize.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="closeAppBtn">
+               <property name="minimumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>28</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="toolTip">
+                <string>close</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="resources.qrc">
+                 <normaloff>:/icons/images/icons/icon_close.png</normaloff>:/icons/images/icons/icon_close.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="mainContent">
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="leftMenuBox0">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalMenuLayout">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="sizeConstraint">
+              <enum>QLayout::SetDefaultConstraint</enum>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item alignment="Qt::AlignTop">
+              <widget class="QFrame" name="leftMenuBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="sizeConstraint">
+                 <enum>QLayout::SetDefaultConstraint</enum>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="mmHomeBtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/images/images/icons/home.png);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>45</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="mmDLBtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/images/images/icons/deadline.png);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="mmGoalsBtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/images/images/icons/goals.png);
+border-left: 17px solid transparent</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="mmPlanBtn">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/images/images/icons/plan.png);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="mmStatisticsBtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/images/images/icons/statistics.png);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="settingsBtn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-image: url(:/icons/images/icons/icon_settings.png);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="contentBox">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="content">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_14">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="settingsLayout">
+                  <property name="maximumSize">
+                   <size>
+                    <width>0</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>ArrowCursor</cursorShape>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item alignment="Qt::AlignTop">
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>TextLabel</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item alignment="Qt::AlignTop">
+                    <widget class="QFrame" name="verticalFrame">
+                     <layout class="QVBoxLayout" name="verticalLayout_13">
+                      <item>
+                       <widget class="QPushButton" name="pushButton_2">
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton">
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="pageContainer">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>5</number>
+                   </property>
+                   <item>
+                    <widget class="QStackedWidget" name="stackedWidget">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="currentIndex">
+                      <number>0</number>
+                     </property>
+                     <widget class="QWidget" name="page_Home">
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <layout class="QHBoxLayout" name="horizontalLayout_11">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QFrame" name="page_Home_Layout">
+                         <property name="maximumSize">
+                          <size>
+                           <width>1000</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>ArrowCursor</cursorShape>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_19">
+                          <property name="spacing">
+                           <number>4</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>10</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>10</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>10</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>10</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="ph_mainBg">
+                            <property name="font">
+                             <font>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_3">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>9</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ph_mainLabel">
+                               <property name="font">
+                                <font>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>ArrowCursor</cursorShape>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">color: rgb(101, 103, 107);</string>
+                               </property>
+                               <property name="text">
+                                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Домашняя страница&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTabWidget" name="ph_tabWidget">
+                               <property name="font">
+                                <font>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="currentIndex">
+                                <number>0</number>
+                               </property>
+                               <widget class="QWidget" name="ph_todayWidget">
+                                <attribute name="title">
+                                 <string>Сегодня</string>
+                                </attribute>
+                                <layout class="QVBoxLayout" name="verticalLayout_9">
+                                 <property name="spacing">
+                                  <number>4</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QFrame" name="ph_todayMainFrame">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>100</height>
+                                    </size>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>ArrowCursor</cursorShape>
+                                   </property>
+                                   <layout class="QVBoxLayout" name="verticalLayout_25">
+                                    <property name="spacing">
+                                     <number>6</number>
+                                    </property>
+                                    <property name="leftMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QLabel" name="ph_tabLabel_1">
+                                      <property name="text">
+                                       <string>На сегодня запланировано x дел (из которых y сделано)</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QTableView" name="ph_mainTableToday">
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>16777215</height>
+                                       </size>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="ph_border">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>2</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>16777215</width>
+                                     <height>2</height>
+                                    </size>
+                                   </property>
+                                   <property name="frameShape">
+                                    <enum>QFrame::StyledPanel</enum>
+                                   </property>
+                                   <property name="frameShadow">
+                                    <enum>QFrame::Raised</enum>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="ph_todayAddFrame">
+                                   <layout class="QVBoxLayout" name="verticalLayout_7">
+                                    <property name="leftMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QLabel" name="ph_label_2">
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>16777215</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>10</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="text">
+                                       <string>Остальные дела:</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QTableView" name="ph_addTable"/>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                               <widget class="QWidget" name="ph_weekWidget">
+                                <attribute name="title">
+                                 <string>Текущая неделя</string>
+                                </attribute>
+                                <layout class="QVBoxLayout" name="verticalLayout_20">
+                                 <property name="spacing">
+                                  <number>6</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLabel" name="ph_tabLabel_2">
+                                   <property name="text">
+                                    <string>На эту неделю запланированы следующие дела:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QTableView" name="ph_mainTableWeek"/>
+                                 </item>
+                                </layout>
+                               </widget>
+                               <widget class="QWidget" name="ph_monthWidget">
+                                <attribute name="title">
+                                 <string>Текущий месяц</string>
+                                </attribute>
+                                <layout class="QVBoxLayout" name="verticalLayout_24">
+                                 <property name="spacing">
+                                  <number>6</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLabel" name="ph_tabLabel_3">
+                                   <property name="text">
+                                    <string>На этот месяц запланированы следующие дела:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QTableView" name="ph_mainTableMonth"/>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="page_Deadlines">
+                      <layout class="QHBoxLayout" name="horizontalLayout_10">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QFrame" name="page_Deadlines_Layout">
+                         <property name="maximumSize">
+                          <size>
+                           <width>1000</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_23">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="pg_tasks">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>200</height>
+                             </size>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_15">
+                             <property name="spacing">
+                              <number>12</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>13</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>12</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="pd_tasksLabel_1">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <pointsize>10</pointsize>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Ниже отображены сроки всех ваших задач:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTableView" name="deadlines_tasks"/>
+                             </item>
+                             <item>
+                              <widget class="QLabel" name="pd_tasksLabel_2">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="text">
+                                <string>У вас x срочных задач. Удачи в выполнении!</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="pd_border">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>2</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>2</height>
+                             </size>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="pd_goals">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>200</height>
+                             </size>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_16">
+                             <property name="spacing">
+                              <number>12</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>13</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>12</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="pd_goalsLabel_1">
+                               <property name="text">
+                                <string>Ниже отображены сроки всех ваших целей:</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTableView" name="tableView"/>
+                             </item>
+                             <item>
+                              <widget class="QLabel" name="pd_goalsLabel_2">
+                               <property name="text">
+                                <string>У вас y срочных целей. Удачи в достижении!</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="page_Goals">
+                      <layout class="QHBoxLayout" name="horizontalLayout">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QScrollArea" name="pg_scrollArea">
+                         <property name="maximumSize">
+                          <size>
+                           <width>1000</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="widgetResizable">
+                          <bool>true</bool>
+                         </property>
+                         <widget class="QWidget" name="page_Goals_Layout">
+                          <property name="geometry">
+                           <rect>
+                            <x>0</x>
+                            <y>0</y>
+                            <width>848</width>
+                            <height>530</height>
+                           </rect>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_9">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="pg_mainFrame">
+                             <property name="cursor">
+                              <cursorShape>ArrowCursor</cursorShape>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_11">
+                              <property name="spacing">
+                               <number>10</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>9</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>9</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>9</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>9</number>
+                              </property>
+                              <item>
+                               <widget class="QFrame" name="pg_mainBg">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>700</height>
+                                 </size>
+                                </property>
+                                <layout class="QVBoxLayout" name="verticalLayout_10">
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QFrame" name="pg_pars">
+                                   <layout class="QHBoxLayout" name="horizontalLayout_4">
+                                    <property name="spacing">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="leftMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QLabel" name="pg_label">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>40</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>40</height>
+                                       </size>
+                                      </property>
+                                      <property name="text">
+                                       <string>Ваши цели</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item alignment="Qt::AlignRight">
+                                     <widget class="QPushButton" name="pg_showNoteBtn">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>272</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>242</width>
+                                        <height>16777215</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>10</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Отобразить заметку по выбранной цели</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="pg_goals">
+                                   <layout class="QHBoxLayout" name="horizontalLayout_3">
+                                    <property name="leftMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QTreeView" name="treeView"/>
+                                    </item>
+                                    <item>
+                                     <widget class="QScrollArea" name="pg_noteScrollArea">
+                                      <property name="enabled">
+                                       <bool>true</bool>
+                                      </property>
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>300</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="widgetResizable">
+                                       <bool>true</bool>
+                                      </property>
+                                      <widget class="QWidget" name="pg_noteWidget">
+                                       <property name="geometry">
+                                        <rect>
+                                         <x>0</x>
+                                         <y>0</y>
+                                         <width>284</width>
+                                         <height>165</height>
+                                        </rect>
+                                       </property>
+                                       <layout class="QVBoxLayout" name="verticalLayout_8">
+                                        <property name="leftMargin">
+                                         <number>0</number>
+                                        </property>
+                                        <property name="topMargin">
+                                         <number>0</number>
+                                        </property>
+                                        <property name="rightMargin">
+                                         <number>0</number>
+                                        </property>
+                                        <item alignment="Qt::AlignRight">
+                                         <widget class="QPushButton" name="pg_noteHideBtn">
+                                          <property name="cursor">
+                                           <cursorShape>PointingHandCursor</cursorShape>
+                                          </property>
+                                          <property name="text">
+                                           <string/>
+                                          </property>
+                                          <property name="icon">
+                                           <iconset resource="resources.qrc">
+                                            <normaloff>:/icons/images/icons/icon_minimize.png</normaloff>:/icons/images/icons/icon_minimize.png</iconset>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item>
+                                         <widget class="QTextEdit" name="pg_textEdit">
+                                          <property name="enabled">
+                                           <bool>true</bool>
+                                          </property>
+                                          <property name="sizePolicy">
+                                           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                           </sizepolicy>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item>
+                                         <widget class="QFrame" name="pg_noteBorder">
+                                          <property name="minimumSize">
+                                           <size>
+                                            <width>0</width>
+                                            <height>2</height>
+                                           </size>
+                                          </property>
+                                          <property name="maximumSize">
+                                           <size>
+                                            <width>16777215</width>
+                                            <height>2</height>
+                                           </size>
+                                          </property>
+                                          <property name="frameShape">
+                                           <enum>QFrame::StyledPanel</enum>
+                                          </property>
+                                          <property name="frameShadow">
+                                           <enum>QFrame::Raised</enum>
+                                          </property>
+                                         </widget>
+                                        </item>
+                                        <item alignment="Qt::AlignBottom">
+                                         <widget class="QFrame" name="horizontalFrame">
+                                          <layout class="QHBoxLayout" name="horizontalLayout_12">
+                                           <item alignment="Qt::AlignLeft">
+                                            <widget class="QPushButton" name="pg_noteChangeBtn">
+                                             <property name="font">
+                                              <font>
+                                               <pointsize>9</pointsize>
+                                              </font>
+                                             </property>
+                                             <property name="cursor">
+                                              <cursorShape>PointingHandCursor</cursorShape>
+                                             </property>
+                                             <property name="text">
+                                              <string>Изменить заметку</string>
+                                             </property>
+                                             <property name="icon">
+                                              <iconset resource="resources.qrc">
+                                               <normaloff>:/icons/images/icons/icon_edit.png</normaloff>:/icons/images/icons/icon_edit.png</iconset>
+                                             </property>
+                                            </widget>
+                                           </item>
+                                           <item alignment="Qt::AlignRight">
+                                            <widget class="QFrame" name="pg_noteRechangeFrame">
+                                             <property name="enabled">
+                                              <bool>true</bool>
+                                             </property>
+                                             <layout class="QHBoxLayout" name="horizontalLayout_6">
+                                              <property name="spacing">
+                                               <number>4</number>
+                                              </property>
+                                              <property name="leftMargin">
+                                               <number>0</number>
+                                              </property>
+                                              <property name="topMargin">
+                                               <number>0</number>
+                                              </property>
+                                              <property name="rightMargin">
+                                               <number>0</number>
+                                              </property>
+                                              <property name="bottomMargin">
+                                               <number>0</number>
+                                              </property>
+                                              <item>
+                                               <widget class="QPushButton" name="pg_doneBtn">
+                                                <property name="enabled">
+                                                 <bool>true</bool>
+                                                </property>
+                                                <property name="cursor">
+                                                 <cursorShape>PointingHandCursor</cursorShape>
+                                                </property>
+                                                <property name="text">
+                                                 <string/>
+                                                </property>
+                                                <property name="icon">
+                                                 <iconset resource="resources.qrc">
+                                                  <normaloff>:/icons/images/icons/icon_done.png</normaloff>:/icons/images/icons/icon_done.png</iconset>
+                                                </property>
+                                               </widget>
+                                              </item>
+                                              <item>
+                                               <widget class="QPushButton" name="pg_undoBtn">
+                                                <property name="enabled">
+                                                 <bool>false</bool>
+                                                </property>
+                                                <property name="cursor">
+                                                 <cursorShape>PointingHandCursor</cursorShape>
+                                                </property>
+                                                <property name="text">
+                                                 <string/>
+                                                </property>
+                                                <property name="icon">
+                                                 <iconset resource="resources.qrc">
+                                                  <normaloff>:/icons/images/icons/icon_undo.png</normaloff>:/icons/images/icons/icon_undo.png</iconset>
+                                                </property>
+                                               </widget>
+                                              </item>
+                                              <item>
+                                               <widget class="QPushButton" name="pg_redoBtn">
+                                                <property name="enabled">
+                                                 <bool>false</bool>
+                                                </property>
+                                                <property name="cursor">
+                                                 <cursorShape>PointingHandCursor</cursorShape>
+                                                </property>
+                                                <property name="text">
+                                                 <string/>
+                                                </property>
+                                                <property name="icon">
+                                                 <iconset resource="resources.qrc">
+                                                  <normaloff>:/icons/images/icons/icon_redo.png</normaloff>:/icons/images/icons/icon_redo.png</iconset>
+                                                </property>
+                                               </widget>
+                                              </item>
+                                             </layout>
+                                            </widget>
+                                           </item>
+                                          </layout>
+                                         </widget>
+                                        </item>
+                                       </layout>
+                                      </widget>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="pg_border">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>2</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>2</height>
+                                 </size>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                               </widget>
+                              </item>
+                              <item alignment="Qt::AlignHCenter">
+                               <widget class="QFrame" name="horizontalFrame">
+                                <property name="cursor">
+                                 <cursorShape>ArrowCursor</cursorShape>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_21">
+                                 <property name="spacing">
+                                  <number>10</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QPushButton" name="pg_newGoalBtn">
+                                   <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                                     <horstretch>0</horstretch>
+                                     <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                   </property>
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>97</width>
+                                     <height>0</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>92</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="text">
+                                    <string>Создать цель</string>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>15</width>
+                                     <height>15</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QPushButton" name="pg_editGoalBtn">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>140</width>
+                                     <height>0</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>140</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="text">
+                                    <string>Редактировать цель</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="pg_newGoalFrame">
+                                <layout class="QVBoxLayout" name="verticalLayout_18">
+                                 <item>
+                                  <widget class="QLineEdit" name="pg_ng_goalEdit">
+                                   <property name="maxLength">
+                                    <number>200</number>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QTextEdit" name="pg_ng_noteEdit">
+                                   <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                     <horstretch>0</horstretch>
+                                     <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="pg_ng_hierarchyFrame">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>ArrowCursor</cursorShape>
+                                   </property>
+                                   <layout class="QVBoxLayout" name="verticalLayout_26">
+                                    <item>
+                                     <widget class="QLabel" name="pg_ng_hierarchyLabel">
+                                      <property name="text">
+                                       <string>Выберите цель из списка выше (нажав один раз), чтобы сделать её надцелью для создаваемой</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item alignment="Qt::AlignLeft">
+                                     <widget class="QLabel" name="pg_ng_superGoal">
+                                      <property name="cursor">
+                                       <cursorShape>ArrowCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string>Здесь будет отображена сама цель</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item alignment="Qt::AlignLeft">
+                                  <widget class="QFrame" name="pg_ng_priority">
+                                   <property name="cursor">
+                                    <cursorShape>ArrowCursor</cursorShape>
+                                   </property>
+                                   <layout class="QHBoxLayout" name="horizontalLayout_13">
+                                    <item>
+                                     <widget class="QLabel" name="pg_ng_label">
+                                      <property name="text">
+                                       <string>Приоритет:</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="pg_ng_rBtn_1">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="pg_ng_rBtn_2">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="pg_ng_rBtn_3">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="pg_ng_dateFrame">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>0</height>
+                                    </size>
+                                   </property>
+                                   <layout class="QVBoxLayout" name="verticalLayout_27">
+                                    <item>
+                                     <widget class="QLabel" name="pg_ng_dateLabel">
+                                      <property name="text">
+                                       <string>Дедлайн:</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item alignment="Qt::AlignLeft">
+                                     <widget class="QWidget" name="pg_ng_changeDateWidget" native="true">
+                                      <layout class="QHBoxLayout" name="horizontalLayout_15">
+                                       <property name="spacing">
+                                        <number>10</number>
+                                       </property>
+                                       <property name="leftMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="topMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="rightMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="bottomMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <item>
+                                        <widget class="QDateEdit" name="pg_ng_dateEdit">
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                          </font>
+                                         </property>
+                                         <property name="dateTime">
+                                          <datetime>
+                                           <hour>0</hour>
+                                           <minute>0</minute>
+                                           <second>0</second>
+                                           <year>2022</year>
+                                           <month>1</month>
+                                           <day>1</day>
+                                          </datetime>
+                                         </property>
+                                         <property name="minimumDateTime">
+                                          <datetime>
+                                           <hour>0</hour>
+                                           <minute>0</minute>
+                                           <second>0</second>
+                                           <year>2022</year>
+                                           <month>1</month>
+                                           <day>1</day>
+                                          </datetime>
+                                         </property>
+                                         <property name="date">
+                                          <date>
+                                           <year>2022</year>
+                                           <month>1</month>
+                                           <day>1</day>
+                                          </date>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item alignment="Qt::AlignLeft">
+                                        <widget class="QCheckBox" name="pg_ng_isDLless">
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                          </font>
+                                         </property>
+                                         <property name="cursor">
+                                          <cursorShape>PointingHandCursor</cursorShape>
+                                         </property>
+                                         <property name="text">
+                                          <string>Бессрочно</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item alignment="Qt::AlignLeft">
+                                  <widget class="QFrame" name="pg_ng_endFrame">
+                                   <layout class="QHBoxLayout" name="horizontalLayout_16">
+                                    <item>
+                                     <widget class="QPushButton" name="pg_ng_doneBtn">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                      <property name="icon">
+                                       <iconset resource="resources.qrc">
+                                        <normaloff>:/icons/images/icons/icon_done.png</normaloff>:/icons/images/icons/icon_done.png</iconset>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QPushButton" name="pg_ng_cancelBtn">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                      <property name="icon">
+                                       <iconset resource="resources.qrc">
+                                        <normaloff>:/icons/images/icons/icon_close.png</normaloff>:/icons/images/icons/icon_close.png</iconset>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="page_Plan">
+                      <layout class="QHBoxLayout" name="horizontalLayout_2">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QScrollArea" name="scrollArea">
+                         <property name="maximumSize">
+                          <size>
+                           <width>1000</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="widgetResizable">
+                          <bool>true</bool>
+                         </property>
+                         <widget class="QWidget" name="pg_scrollAreaWidget">
+                          <property name="geometry">
+                           <rect>
+                            <x>0</x>
+                            <y>0</y>
+                            <width>364</width>
+                            <height>676</height>
+                           </rect>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_22">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="page_Plan_mainLayout">
+                             <layout class="QVBoxLayout" name="verticalLayout_28">
+                              <item>
+                               <widget class="QLabel" name="pp_mainLabel">
+                                <property name="font">
+                                 <font>
+                                  <pointsize>10</pointsize>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Планирование&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                </property>
+                                <property name="alignment">
+                                 <set>Qt::AlignCenter</set>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="pp_mainFrame">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_19">
+                                 <item alignment="Qt::AlignTop">
+                                  <widget class="QFrame" name="pp_deadlineFrame">
+                                   <layout class="QVBoxLayout" name="verticalLayout_31">
+                                    <item>
+                                     <widget class="QLabel" name="pp_dateLabel">
+                                      <property name="text">
+                                       <string>Выберите дату
+для планирования</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QDateEdit" name="pp_dateEdit">
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>10</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="dateTime">
+                                       <datetime>
+                                        <hour>0</hour>
+                                        <minute>0</minute>
+                                        <second>0</second>
+                                        <year>2022</year>
+                                        <month>1</month>
+                                        <day>1</day>
+                                       </datetime>
+                                      </property>
+                                      <property name="minimumDateTime">
+                                       <datetime>
+                                        <hour>0</hour>
+                                        <minute>0</minute>
+                                        <second>0</second>
+                                        <year>2022</year>
+                                        <month>1</month>
+                                        <day>1</day>
+                                       </datetime>
+                                      </property>
+                                      <property name="date">
+                                       <date>
+                                        <year>2022</year>
+                                        <month>1</month>
+                                        <day>1</day>
+                                       </date>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QTableView" name="pp_tabelView"/>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="pp_border">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>2</height>
+                                 </size>
+                                </property>
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>2</height>
+                                 </size>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                               </widget>
+                              </item>
+                              <item alignment="Qt::AlignHCenter">
+                               <widget class="QFrame" name="pp_taskEditBtnsFrame">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_18">
+                                 <property name="spacing">
+                                  <number>10</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QPushButton" name="pp_createTaskBtn">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>109</width>
+                                     <height>0</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="text">
+                                    <string>Создать задачу</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QPushButton" name="pp_editTaskBtn">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>152</width>
+                                     <height>0</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="text">
+                                    <string>Редактировать задачу</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="pp_taskEditFrame">
+                                <layout class="QVBoxLayout" name="verticalLayout_30">
+                                 <item>
+                                  <widget class="QLineEdit" name="pp_te_taskEdit"/>
+                                 </item>
+                                 <item>
+                                  <widget class="QTextEdit" name="pp_te_noteEdit">
+                                   <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                     <horstretch>0</horstretch>
+                                     <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>16777215</width>
+                                     <height>70</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item alignment="Qt::AlignLeft">
+                                  <widget class="QCheckBox" name="pp_te_isHabit_cBox">
+                                   <property name="font">
+                                    <font>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="text">
+                                    <string>Привычка</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="pp_te_habitFrame">
+                                   <layout class="QVBoxLayout" name="verticalLayout_32">
+                                    <property name="spacing">
+                                     <number>5</number>
+                                    </property>
+                                    <property name="leftMargin">
+                                     <number>10</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>5</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <item alignment="Qt::AlignLeft">
+                                     <widget class="QLabel" name="pp_te_habitLabel">
+                                      <property name="text">
+                                       <string>Выберите, с какой частотой она будет повторяться</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item alignment="Qt::AlignLeft">
+                                     <widget class="QFrame" name="pp_te_dateFrame">
+                                      <property name="cursor">
+                                       <cursorShape>ArrowCursor</cursorShape>
+                                      </property>
+                                      <layout class="QVBoxLayout" name="verticalLayout_33">
+                                       <property name="spacing">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="leftMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="topMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="rightMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="bottomMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <item alignment="Qt::AlignLeft">
+                                        <widget class="QFrame" name="pp_te_dateRBtns">
+                                         <layout class="QHBoxLayout" name="horizontalLayout_24">
+                                          <property name="spacing">
+                                           <number>10</number>
+                                          </property>
+                                          <property name="leftMargin">
+                                           <number>10</number>
+                                          </property>
+                                          <property name="topMargin">
+                                           <number>2</number>
+                                          </property>
+                                          <property name="rightMargin">
+                                           <number>10</number>
+                                          </property>
+                                          <property name="bottomMargin">
+                                           <number>2</number>
+                                          </property>
+                                          <item>
+                                           <widget class="QRadioButton" name="DoW_rBtn">
+                                            <property name="font">
+                                             <font>
+                                              <pointsize>10</pointsize>
+                                             </font>
+                                            </property>
+                                            <property name="cursor">
+                                             <cursorShape>PointingHandCursor</cursorShape>
+                                            </property>
+                                            <property name="text">
+                                             <string>По дням недели</string>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                          <item>
+                                           <widget class="QRadioButton" name="daysInRow_rBtn">
+                                            <property name="font">
+                                             <font>
+                                              <pointsize>10</pointsize>
+                                             </font>
+                                            </property>
+                                            <property name="cursor">
+                                             <cursorShape>PointingHandCursor</cursorShape>
+                                            </property>
+                                            <property name="text">
+                                             <string>Каждые x дней</string>
+                                            </property>
+                                           </widget>
+                                          </item>
+                                         </layout>
+                                        </widget>
+                                       </item>
+                                       <item>
+                                        <widget class="QFrame" name="pp_te_datesFrame">
+                                         <layout class="QHBoxLayout" name="horizontalLayout_23">
+                                          <property name="spacing">
+                                           <number>0</number>
+                                          </property>
+                                          <property name="leftMargin">
+                                           <number>0</number>
+                                          </property>
+                                          <property name="topMargin">
+                                           <number>0</number>
+                                          </property>
+                                          <property name="rightMargin">
+                                           <number>0</number>
+                                          </property>
+                                          <property name="bottomMargin">
+                                           <number>0</number>
+                                          </property>
+                                          <item>
+                                           <widget class="QFrame" name="pp_te_DoW_Frame">
+                                            <layout class="QVBoxLayout" name="verticalLayout_34">
+                                             <property name="spacing">
+                                              <number>5</number>
+                                             </property>
+                                             <property name="leftMargin">
+                                              <number>5</number>
+                                             </property>
+                                             <property name="topMargin">
+                                              <number>5</number>
+                                             </property>
+                                             <property name="rightMargin">
+                                              <number>2</number>
+                                             </property>
+                                             <property name="bottomMargin">
+                                              <number>5</number>
+                                             </property>
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QCheckBox" name="ppte_mon">
+                                               <property name="font">
+                                                <font>
+                                                 <pointsize>9</pointsize>
+                                                </font>
+                                               </property>
+                                               <property name="cursor">
+                                                <cursorShape>PointingHandCursor</cursorShape>
+                                               </property>
+                                               <property name="text">
+                                                <string>Понедельник</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QCheckBox" name="ppte_tue">
+                                               <property name="font">
+                                                <font>
+                                                 <pointsize>9</pointsize>
+                                                </font>
+                                               </property>
+                                               <property name="cursor">
+                                                <cursorShape>PointingHandCursor</cursorShape>
+                                               </property>
+                                               <property name="text">
+                                                <string>Вторник</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QCheckBox" name="ppte_wen">
+                                               <property name="font">
+                                                <font>
+                                                 <pointsize>9</pointsize>
+                                                </font>
+                                               </property>
+                                               <property name="cursor">
+                                                <cursorShape>PointingHandCursor</cursorShape>
+                                               </property>
+                                               <property name="text">
+                                                <string>Среда</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QCheckBox" name="ppte_thu">
+                                               <property name="font">
+                                                <font>
+                                                 <pointsize>9</pointsize>
+                                                </font>
+                                               </property>
+                                               <property name="cursor">
+                                                <cursorShape>PointingHandCursor</cursorShape>
+                                               </property>
+                                               <property name="text">
+                                                <string>Четверг</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QCheckBox" name="ppte_fri">
+                                               <property name="font">
+                                                <font>
+                                                 <pointsize>9</pointsize>
+                                                </font>
+                                               </property>
+                                               <property name="cursor">
+                                                <cursorShape>PointingHandCursor</cursorShape>
+                                               </property>
+                                               <property name="text">
+                                                <string>Пятница</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QCheckBox" name="ppte_sat">
+                                               <property name="font">
+                                                <font>
+                                                 <pointsize>9</pointsize>
+                                                </font>
+                                               </property>
+                                               <property name="cursor">
+                                                <cursorShape>PointingHandCursor</cursorShape>
+                                               </property>
+                                               <property name="text">
+                                                <string>Суббота</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                             <item alignment="Qt::AlignLeft">
+                                              <widget class="QCheckBox" name="ppte_sun">
+                                               <property name="font">
+                                                <font>
+                                                 <pointsize>9</pointsize>
+                                                </font>
+                                               </property>
+                                               <property name="cursor">
+                                                <cursorShape>PointingHandCursor</cursorShape>
+                                               </property>
+                                               <property name="text">
+                                                <string>Воскресенье</string>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                            </layout>
+                                           </widget>
+                                          </item>
+                                          <item>
+                                           <widget class="QFrame" name="pp_te_daysInRow_Frame">
+                                            <property name="cursor">
+                                             <cursorShape>ArrowCursor</cursorShape>
+                                            </property>
+                                            <layout class="QHBoxLayout" name="horizontalLayout_25">
+                                             <item alignment="Qt::AlignTop">
+                                              <widget class="QSpinBox" name="pp_te_spinBox">
+                                               <property name="minimum">
+                                                <number>1</number>
+                                               </property>
+                                               <property name="maximum">
+                                                <number>64</number>
+                                               </property>
+                                               <property name="value">
+                                                <number>1</number>
+                                               </property>
+                                              </widget>
+                                             </item>
+                                            </layout>
+                                           </widget>
+                                          </item>
+                                         </layout>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item alignment="Qt::AlignLeft">
+                                  <widget class="QFrame" name="pp_te_priorityFrame">
+                                   <layout class="QHBoxLayout" name="horizontalLayout_26">
+                                    <property name="leftMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QLabel" name="pp_te_label">
+                                      <property name="text">
+                                       <string>Приоритет:</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="pp_te_rBtn_1">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="pp_te_rBtn_2">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QRadioButton" name="pp_te_rBtn_3">
+                                      <property name="cursor">
+                                       <cursorShape>PointingHandCursor</cursorShape>
+                                      </property>
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QFrame" name="pp_te_deadlineFrame">
+                                   <property name="cursor">
+                                    <cursorShape>ArrowCursor</cursorShape>
+                                   </property>
+                                   <layout class="QVBoxLayout" name="verticalLayout_35">
+                                    <property name="leftMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QLabel" name="pp_te_DLLabel">
+                                      <property name="text">
+                                       <string>Дедлайн:</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item alignment="Qt::AlignLeft">
+                                     <widget class="QFrame" name="pp_te_changeDateFrame">
+                                      <property name="cursor">
+                                       <cursorShape>ArrowCursor</cursorShape>
+                                      </property>
+                                      <layout class="QHBoxLayout" name="horizontalLayout_20">
+                                       <property name="spacing">
+                                        <number>10</number>
+                                       </property>
+                                       <property name="leftMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="topMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="rightMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <property name="bottomMargin">
+                                        <number>0</number>
+                                       </property>
+                                       <item>
+                                        <widget class="QDateEdit" name="pp_te_dateEdit">
+                                         <property name="dateTime">
+                                          <datetime>
+                                           <hour>0</hour>
+                                           <minute>0</minute>
+                                           <second>0</second>
+                                           <year>2022</year>
+                                           <month>1</month>
+                                           <day>1</day>
+                                          </datetime>
+                                         </property>
+                                         <property name="minimumDateTime">
+                                          <datetime>
+                                           <hour>0</hour>
+                                           <minute>0</minute>
+                                           <second>0</second>
+                                           <year>2022</year>
+                                           <month>1</month>
+                                           <day>1</day>
+                                          </datetime>
+                                         </property>
+                                         <property name="date">
+                                          <date>
+                                           <year>2022</year>
+                                           <month>1</month>
+                                           <day>1</day>
+                                          </date>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                       <item>
+                                        <widget class="QCheckBox" name="pp_te_isDLless">
+                                         <property name="font">
+                                          <font>
+                                           <pointsize>10</pointsize>
+                                          </font>
+                                         </property>
+                                         <property name="cursor">
+                                          <cursorShape>PointingHandCursor</cursorShape>
+                                         </property>
+                                         <property name="text">
+                                          <string>Бессрочно</string>
+                                         </property>
+                                        </widget>
+                                       </item>
+                                      </layout>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                 <item alignment="Qt::AlignLeft">
+                                  <widget class="QFrame" name="pp_te_endFrame">
+                                   <layout class="QHBoxLayout" name="horizontalLayout_27">
+                                    <property name="leftMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="topMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="rightMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>9</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QPushButton" name="pp_te_doneBtn">
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                      <property name="icon">
+                                       <iconset resource="resources.qrc">
+                                        <normaloff>:/icons/images/icons/icon_done.png</normaloff>:/icons/images/icons/icon_done.png</iconset>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QPushButton" name="pp_te_cancelBtn">
+                                      <property name="text">
+                                       <string/>
+                                      </property>
+                                      <property name="icon">
+                                       <iconset resource="resources.qrc">
+                                        <normaloff>:/icons/images/icons/icon_close.png</normaloff>:/icons/images/icons/icon_close.png</iconset>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="page_Statistics">
+                      <layout class="QHBoxLayout" name="horizontalLayout_8">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QFrame" name="ps_mainLayout">
+                         <property name="maximumSize">
+                          <size>
+                           <width>1000</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_22">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>9</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="ps_statFrame">
+                            <layout class="QVBoxLayout" name="verticalLayout_21">
+                             <property name="spacing">
+                              <number>12</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>13</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>12</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ps_statLabel">
+                               <property name="text">
+                                <string>Общая статистика
+Здесь собрана некоторая статистика по выполненным задачам</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTableView" name="ps_statTable"/>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="ps_border_1">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>2</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>2</height>
+                             </size>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="ps_habitsFrame">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>100</height>
+                             </size>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_17">
+                             <property name="spacing">
+                              <number>12</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>13</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>12</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ps_habitsLabel">
+                               <property name="text">
+                                <string>Привычки
+Здесь собрана статистика по вашим привычкам</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTableView" name="ps_habitsTable"/>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="ps_border_2">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>2</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>2</height>
+                             </size>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="ps_archiveFrame">
+                            <layout class="QVBoxLayout" name="verticalLayout_12">
+                             <property name="spacing">
+                              <number>12</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>13</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>10</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>12</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ps_archiveLabel">
+                               <property name="text">
+                                <string>Архив
+Здесь собраны выполненные задачи за 5 прошлых дней</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTableView" name="ps_archiveTable"/>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="bottomBar">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>ArrowCursor</cursorShape>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_17">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>10</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="creditsLabel">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>8</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(152, 137, 122);</string>
+                  </property>
+                  <property name="text">
+                   <string>By: Stepanov Viktor</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frameSizeGrip">
+                  <property name="minimumSize">
+                   <size>
+                    <width>22</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>22</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">image: url(:/icons/images/icons/icon_size_grip.png);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
